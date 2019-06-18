@@ -1,18 +1,24 @@
 pipeline {
+     agent any
+     triggers {
+          pollSCM('* * * * *')
+     }
+     stages {
+          stage("Compile") {
+               steps {
+                    sh "./gradlew compileJava"
+               }
+          }
+          stage("Unit test") {
+               steps {
+                    sh "./gradlew test"
+               }
+          }
 
-agent any
-
-stages {
-
-stage('compile') {
-   steps {
-   sh "./gradlew compileJava"
+          stage("Package") {
+               steps {
+                    sh "./gradlew build"
+               }
+          }
+     }
    }
-  }
-  stage("Unit test") {
-  steps {
-  sh "./gradlew test"
-   }
-  }
- }
-}
