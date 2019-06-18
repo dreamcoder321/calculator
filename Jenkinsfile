@@ -6,18 +6,18 @@ pipeline {
      stages {
           stage("Compile") {
                steps {
-                    sh "./gradlew compileJava"
+                    bat "./gradlew compileJava"
                }
           }
           stage("Unit test") {
                steps {
-                    sh "./gradlew test"
+                    bat "./gradlew test"
                }
           }
 
           stage("Package") {
                steps {
-                    sh "./gradlew build"
+                    bat "./gradlew build"
                }
           }
      }
