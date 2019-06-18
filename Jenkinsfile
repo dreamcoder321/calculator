@@ -9,5 +9,10 @@ stage('compile') {
    sh "./gradlew compileJava"
    }
   }
+  stage("Unit test") {
+  steps {
+  sh "./gradlew test"
+  }
+  }
  }
 }
